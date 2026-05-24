@@ -1,4 +1,0 @@
-cd D:\museum_bot
-.\rasa\Scripts\Activate
-cd D:\museum_bot\chatbot
-rasa shell
