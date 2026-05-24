@@ -2,32 +2,34 @@ version: "3.1"
 
 intents:
   - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - ask_tour_schedule
+  - ask_exhibit_info
+  - ask_joke_anecdote
+  - buy_tickets
+  - ask_hours
+  - end_tour
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Γεια! Είμαι ο ψηφιακός σου ξεναγός. Μπορώ να σου πω ιστορίες για τα εκθέματα, να δούμε το πρόγραμμα ή να βγάλουμε εισιτήρια."
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_tour_schedule:
+  - text: "Σήμερα έχουμε δύο υπέροχες διαδρομές! Μπορείς να ακολουθήσεις τη «Διαδρομή της Αρχαιότητας» στις 12:00 ή τη «Σύγχρονη Τέχνη» στις 14:00. Μπορείς επίσης να ενταχθείς σε κάποιο από τα ανοιχτά groups επισκεπτών!"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_exhibit_info:
+  - text: "Αυτό το έργο έχει τεράστια ιστορική σημασία. Δημιουργήθηκε κάτω από ιδιαίτερες κοινωνικές συνθήκες και αντανακλά την πραγματικότητα της εποχής του, μακριά από τα στερεότυπα που ίσως έχουμε σήμερα στο μυαλό μας. Θέλεις να μάθεις για τον δημιουργό;"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_joke_anecdote:
+  - text: "Ξέρεις γιατί οι ζωγράφοι δεν παίζουν ποτέ κρυφτό; Γιατί πάντα τους προδίδει η παλέτα τους! Εντάξει, εντάξει... ίσως είμαι καλύτερος στην ιστορία παρά στα ανέκδοτα."
 
-  utter_goodbye:
-  - text: "Bye"
+  utter_buy_tickets:
+  - text: "Τέλεια! Μπορείς να εκδώσεις τα εισιτήριά σου ηλεκτρονικά πατώντας [εδώ](link). Μην ξεχάσεις να ρωτήσεις για μειωμένα ή δωρεάν εισιτήρια αν ανήκεις σε κάποια ειδική κατηγορία."
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_hours:
+  - text: "Το μουσείο μας είναι ανοιχτό καθημερινά από τις 09:00 το πρωί έως τις 20:00 το βράδυ. Τις Δευτέρες παραμένουμε κλειστά."
+
+  utter_end_tour:
+  - text: "Χάρηκα πολύ που σε είχα στην παρέα μου σήμερα! Ελπίζω να απόλαυσες την ξενάγηση. Καλό δρόμο και εις το επανιδείν!"
 
 session_config:
   session_expiration_time: 60

@@ -1,4 +1,13 @@
+Εκκίνηση του chatbot:
 cd D:\museum_bot
 .\rasa\Scripts\Activate
+cd D:\museum_bot\chatbot
+rasa shell
+
+Επανεκπαίδευση:
+cd D:\museum_bot\chatbot
+rasa train
+
+Δοκιμή και χρήση του chatbot
 cd D:\museum_bot\chatbot
 rasa shell

@@ -1,30 +1,20 @@
 version: "3.1"
 
 stories:
+  - story: Μια τυπική επίσκεψη στο μουσείο
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_tour_schedule
+      - action: utter_tour_schedule
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: end_tour
+      - action: utter_end_tour
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - story: Ερώτηση για έκθεμα και ανέκδοτο
+    steps:
+      - intent: ask_exhibit_info
+      - action: utter_exhibit_info
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote

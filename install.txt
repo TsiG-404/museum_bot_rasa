@@ -1,0 +1,19 @@
+Δημιουργία και μετάβαση στον φάκελο του project:
+mkdir museum_bot
+cd museum_bot
+
+Δημιουργία του venv με την Python 3.10:
+py -3.10 -m venv rasa
+
+Ενεργοποίηση του venv
+rasa\Scripts\activate.bat
+
+Αναβάθμιση pip και εγκατάσταση του Rasa πρέπει το cmd να έχει από μπροστά (rasa):
+python -m pip install -U pip
+pip install rasa
+
+Για να τρέξεις το rasa bot:
+cd D:\museum_bot # ο φάκελος που είναι το rasa venv 
+.\rasa\Scripts\Activate # ενεργοποίηση του venv
+cd D:\museum_bot\chatbot # o φάκελος που είναι το chatbot
+rasa shell # εκκίνηση του chatbot

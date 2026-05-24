@@ -1,13 +1,37 @@
 version: "3.1"
 
 rules:
+  - rule: Απάντηση στον χαιρετισμό
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Απάντηση για πρόγραμμα ξεναγήσεων
+    steps:
+      - intent: ask_tour_schedule
+      - action: utter_tour_schedule
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - rule: Απάντηση για πληροφορίες εκθέματος
+    steps:
+      - intent: ask_exhibit_info
+      - action: utter_exhibit_info
+
+  - rule: Απάντηση με ανέκδοτο/αστείο
+    steps:
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote
+
+  - rule: Απάντηση για αγορά εισιτηρίων
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+
+  - rule: Απάντηση για ώρες λειτουργίας
+    steps:
+      - intent: ask_hours
+      - action: utter_hours
+
+  - rule: Απάντηση για λήξη ξενάγησης
+    steps:
+      - intent: end_tour
+      - action: utter_end_tour
