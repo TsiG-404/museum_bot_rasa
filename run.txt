@@ -11,3 +11,9 @@ rasa train
 Δοκιμή και χρήση του chatbot
 cd D:\museum_bot\chatbot
 rasa shell
+
+Για να δουλεψει σωστα με actions θελει δευτερο τερμαντικο:
+cd D:\museum_bot
+rasa\Scripts\activate.bat
+cd chatbot
+rasa run actions

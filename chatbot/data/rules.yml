@@ -11,10 +11,11 @@ rules:
       - intent: ask_tour_schedule
       - action: utter_tour_schedule
 
-  - rule: Απάντηση για πληροφορίες εκθέματος
-    steps:
-      - intent: ask_exhibit_info
-      - action: utter_exhibit_info
+#δεν το χρησιμοποιουμε καθως πλεον τραβαμε πληροφοριες δυναμικα#
+  #- rule: Απάντηση για πληροφορίες εκθέματος#
+   # steps:#
+    #  - intent: ask_exhibit_info#
+    # - action: utter_exhibit_info#
 
   - rule: Απάντηση με ανέκδοτο/αστείο
     steps:
@@ -35,3 +36,38 @@ rules:
     steps:
       - intent: end_tour
       - action: utter_end_tour
+
+  - rule: Απάντηση για τοποθεσία/πλοήγηση
+    steps:
+      - intent: ask_location
+      - action: utter_ask_location
+
+  - rule: Απάντηση για κανόνες μουσείου
+    steps:
+      - intent: ask_museum_rules
+      - action: utter_ask_museum_rules
+
+  - rule: Απάντηση για προσβασιμότητα
+    steps:
+      - intent: ask_accessibility
+      - action: utter_ask_accessibility
+
+  - rule: Απάντηση για παροχές και εγκαταστάσεις
+    steps:
+      - intent: ask_facilities
+      - action: utter_ask_facilities
+
+  - rule: Απάντηση για εκπτώσεις
+    steps:
+      - intent: ask_discounts
+      - action: utter_ask_discounts
+  #για να εμφανιστει η λιστα με τα εκθεματα
+  - rule: Εμφάνιση διαθέσιμων εκθεμάτων
+    steps:
+      - intent: ask_available_exhibits
+      - action: action_list_available_exhibits
+
+  - rule: Fallback όταν το bot δεν καταλαβαίνει
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default

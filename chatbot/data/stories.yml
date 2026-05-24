@@ -14,7 +14,19 @@ stories:
 
   - story: Ερώτηση για έκθεμα και ανέκδοτο
     steps:
-      - intent: ask_exhibit_info
-      - action: utter_exhibit_info
+      #- intent: ask_exhibit_info #
+      #- action: utter_exhibit_info #
       - intent: ask_joke_anecdote
       - action: utter_joke_anecdote
+
+#δυναμικο story για την αναζητηση πληροφοριων ενος εκθεματος απο την βαση δεδομενων συγκεκριμενα#
+#nlu ask_exhibit -> τραβαμε το slot exhibit απο το domain -> stories κραταμε το name και παμε στο ask info στην βαση με την λεξη κλειδι και το επιστρεφουμε#
+  - story: Αναζήτηση συγκεκριμένου εκθέματος
+    steps:
+      - intent: ask_exhibit_info
+        entities:
+          - exhibit_name: "δισκοβόλο"
+      - slot_was_set:
+          - exhibit_name: "δισκοβόλο"
+      - action: action_provide_exhibit_info
+#για να τρεξει χρησιμοποιουμε το endpoints για να τρεξουμε python για την db μας 
