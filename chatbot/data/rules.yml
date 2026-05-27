@@ -22,11 +22,6 @@ rules:
       - intent: ask_joke_anecdote
       - action: utter_joke_anecdote
 
-  - rule: Απάντηση για αγορά εισιτηρίων
-    steps:
-      - intent: buy_tickets
-      - action: utter_buy_tickets
-
   - rule: Απάντηση για ώρες λειτουργίας
     steps:
       - intent: ask_hours
@@ -71,3 +66,34 @@ rules:
     steps:
       - intent: nlu_fallback
       - action: utter_default
+
+
+  #για αγορα εισητηριων μεσω link
+  - rule: Προσφορά επιλογών για εισιτήρια
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+
+  #για αγορα με rasa form
+  - rule: Ενεργοποίηση της φόρμας εισιτηρίων (Μαζί)
+    steps:
+      - intent: buy_tickets_together
+      - action: ticket_form
+      - active_loop: ticket_form
+
+  #υποβολη της rasa form
+  - rule: Υποβολή της φόρμας εισιτηρίων (Submit)
+    condition:
+      - active_loop: ticket_form
+    steps:
+      - action: ticket_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_submit_ticket_form
+
+  #proactive για την ολοκληρωση ενος βηματος
+  - rule: Προδραστική απάντηση στο Ευχαριστώ
+    steps:
+      - intent: thank_you
+      - action: utter_proactive_help

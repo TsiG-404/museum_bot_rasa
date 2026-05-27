@@ -14,13 +14,11 @@ stories:
 
   - story: Ερώτηση για έκθεμα και ανέκδοτο
     steps:
-      #- intent: ask_exhibit_info #
-      #- action: utter_exhibit_info #
+      - intent: ask_exhibit_info 
+      - action: action_provide_exhibit_info
       - intent: ask_joke_anecdote
       - action: utter_joke_anecdote
 
-#δυναμικο story για την αναζητηση πληροφοριων ενος εκθεματος απο την βαση δεδομενων συγκεκριμενα#
-#nlu ask_exhibit -> τραβαμε το slot exhibit απο το domain -> stories κραταμε το name και παμε στο ask info στην βαση με την λεξη κλειδι και το επιστρεφουμε#
   - story: Αναζήτηση συγκεκριμένου εκθέματος
     steps:
       - intent: ask_exhibit_info
@@ -29,4 +27,139 @@ stories:
       - slot_was_set:
           - exhibit_name: "δισκοβόλο"
       - action: action_provide_exhibit_info
-#για να τρεξει χρησιμοποιουμε το endpoints για να τρεξουμε python για την db μας 
+
+  - story: Ολοκληρωμένη περιήγηση και ανέκδοτο
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_available_exhibits
+      - action: action_list_available_exhibits
+      - intent: ask_exhibit_info
+        entities:
+          - exhibit_name: "Νίκη της Σαμοθράκης"
+      - action: action_provide_exhibit_info
+      - intent: thank_you
+      - action: utter_proactive_help
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote
+
+  - story: Κράτηση εισιτηρίων μέσω φόρμας και μετά λίστα εκθεμάτων
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: buy_tickets_together
+      - action: ticket_form
+      - active_loop: ticket_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_submit_ticket_form
+      - intent: thank_you
+      - action: utter_proactive_help
+      - intent: ask_available_exhibits
+      - action: action_list_available_exhibits
+
+  - story: Απευθείας ερώτηση για έκθεμα και αστείο
+    steps:
+      - intent: ask_exhibit_info
+        entities:
+          - exhibit_name: "μηχανισμό των αντικυθήρων"
+      - action: action_provide_exhibit_info
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote
+
+  - story: Γρήγορη αγορά εισιτηρίων (από το link) και κλείσιμο
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: thank_you
+      - action: utter_proactive_help
+
+  - story: Απλή έναρξη, κανόνες και έξοδος
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_museum_rules
+      - action: utter_ask_museum_rules
+      - intent: end_tour
+      - action: utter_end_tour
+
+  - story: Ερώτηση για ώρες, εκπτώσεις και ανέκδοτο
+    steps:
+      - intent: ask_hours
+      - action: utter_hours
+      - intent: ask_discounts
+      - action: utter_ask_discounts
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote
+      - intent: thank_you
+      - action: utter_proactive_help
+
+  - story: Προετοιμασία επίσκεψης με προσβασιμότητα και παροχές
+    steps:
+      - intent: ask_accessibility
+      - action: utter_ask_accessibility
+      - intent: ask_facilities
+      - action: utter_ask_facilities
+      - intent: ask_tour_schedule
+      - action: utter_tour_schedule
+      - intent: thank_you
+      - action: utter_proactive_help
+
+  - story: Κράτηση εισιτηρίων μαζί με το bot (Rasa Form)
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: buy_tickets_together
+      - action: ticket_form
+      - active_loop: ticket_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_submit_ticket_form
+      - intent: thank_you
+      - action: utter_proactive_help
+
+  - story: Γρήγορη αγορά εισιτηρίων (link) και αναζήτηση τοποθεσίας
+    steps:
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: ask_location
+      - action: utter_ask_location
+      - intent: thank_you
+      - action: utter_proactive_help
+      - intent: end_tour
+      - action: utter_end_tour
+
+  - story: Δυναμική εξερεύνηση εκθεμάτων και πληροφορίες
+    steps:
+      - intent: ask_available_exhibits
+      - action: action_list_available_exhibits
+      - intent: ask_exhibit_info
+        entities:
+          - exhibit_name: "Αφροδίτη της Μήλου"
+      - action: action_provide_exhibit_info
+      - intent: ask_joke_anecdote
+      - action: utter_joke_anecdote
+
+  - story: Μεγάλη σύνθετη συζήτηση επισκέπτη
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_hours
+      - action: utter_hours
+      - intent: ask_location
+      - action: utter_ask_location
+      - intent: buy_tickets
+      - action: utter_buy_tickets
+      - intent: buy_tickets_together
+      - action: ticket_form
+      - active_loop: ticket_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_submit_ticket_form
+      - intent: thank_you
+      - action: utter_proactive_help
+      - intent: ask_tour_schedule
+      - action: utter_tour_schedule
