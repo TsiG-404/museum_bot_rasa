@@ -9,6 +9,8 @@ cd D:\museum_bot\chatbot
 rasa train
 
 Δοκιμή και χρήση του chatbot
+cd D:\museum_bot
+.\rasa\Scripts\Activate
 cd D:\museum_bot\chatbot
 rasa shell
 
@@ -17,3 +19,8 @@ cd D:\museum_bot
 rasa\Scripts\activate.bat
 cd chatbot
 rasa run actions
+
+Για να δουλεψει με μηνυματα από html θελουμε:
+2 cmd
+το 1 είναι με το rasa run actions
+το 2 είναι με το rasa run --enable-api --cors "*"
